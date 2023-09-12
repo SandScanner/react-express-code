@@ -1,0 +1,17 @@
+POST http://localhost:3001/getBookingDetails HTTP/1.1
+Content-Type: application/json
+
+{
+    "vehicleNumber":"TN24U7089",
+    "userId": 2
+}
+
+
+#################
+POST http://localhost:3001/confirmAndCloseOrder HTTP/1.1
+Content-Type: application/json
+
+{
+    "permitId": 120120,
+    "userId": 2
+}
