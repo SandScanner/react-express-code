@@ -4,13 +4,14 @@ const app = express();
 const cors = require('cors');
 const sqlite = require('sqlite3').verbose();
 const mysql = require('mysql');
+require('dotenv').config()
 
 
 let db = mysql.createConnection({
-    host: "localhost",
-    user: "shield",
-    password: "Shield@007",
-    database: "quarry_db",
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
 })
 
 app.use(cors());
@@ -140,5 +141,8 @@ app.post('/confirmAndCloseOrder', (req, res) => {
     })
 })
 
+app.get('/health', (req, res) => {
+    res.sendStatus(200);
+})
 
 app.listen(3001, () => {console.log("Server is Running...")})
