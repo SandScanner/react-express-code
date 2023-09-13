@@ -10,8 +10,21 @@ import InfiniteScrollComponent from "./components/ScrollableComponent/InfiniteSc
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import QuarryUpload from "./components/QuarryUploader/QuarryUpload";
+import { useEffect } from "react";
+import axios from "axios";
 
 function App() {
+
+  const healthcheck = () => {
+    axios.get(process.env.REACT_APP_API_URL+"/health").catch(err => console.log('connection failed...'))
+  }
+
+  useEffect(() => {
+    
+    setInterval(healthcheck, 2000);
+  }, [])
+
+
   return (
     <AxiosInterceptor>
       <div className="App">

@@ -6,6 +6,7 @@ import * as XLSX from 'xlsx';
 import axios from 'axios';
 import Loader from "../../utils/loader/Loader";
 import { toast } from "react-toastify";
+import regTemplate from './regTemplate.xlsx'
 
 const QuarryUpload = () => {
 
@@ -16,6 +17,8 @@ const QuarryUpload = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  console.log("uirlll", process.env.REACT_APP_API_URL)
 
   //file upload
   const fileUpload = (event) => {
@@ -58,7 +61,7 @@ const QuarryUpload = () => {
 
   const bulkupload = () => {
     console.log("excel data", excelData);
-    axios.post('http://localhost:3001/bulkuploadQuarryList', {quarrys : excelData}).then(res => {}).catch(err => {})
+    axios.post(process.env.REACT_APP_API_URL+'/bulkuploadQuarryList', {quarrys : excelData}).then(res => {}).catch(err => {})
   }
 
   const registerVehicles = async(e) => {
@@ -75,7 +78,7 @@ const QuarryUpload = () => {
     })
 
     if(check){
-        await axios.post('http://localhost:3001/vehicleRegistration', {vehicleData: excelData, quarryId: quarryDetails.quarryId}).then(res => {
+        await axios.post(process.env.REACT_APP_API_URL+'/vehicleRegistration', {vehicleData: excelData, quarryId: quarryDetails.quarryId}).then(res => {
             toast.success('file uploaded successfully');
             navigate('/');
         })
@@ -99,6 +102,7 @@ const QuarryUpload = () => {
             <div className='container mt-5'>
             <h1 className='text-success'>Quarry - <span className='text-primary bg-dark'>{quarryDetails?.name}</span></h1>
             <div className='container mt-4' >
+            <a href={regTemplate} className='btn btn-primary'>Download Template</a>
             <form className='form-group' onSubmit={registerVehicles}>
             <input type='file' onChange={fileUpload} required/>
             <Button type='submit'>Upload</Button>
