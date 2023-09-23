@@ -77,6 +77,14 @@ app.post('/vehicleRegistration', (req, res) => {
     const { vehicleData, quarryId }  = req.body;
     let sqlstatement = '';
     let TABLE_NAME = 'permitbookings';
+
+    /* date time logic */
+
+    let date_time = new Date().toISOString()
+    
+
+    /*********************/
+
     vehicleData.map(async(x) => {
         let keylist = "("
         let valuelist = "("
@@ -93,8 +101,8 @@ app.post('/vehicleRegistration', (req, res) => {
         else
             valuelist += value
         }
-        keylist += ", quarryId, orderStatus)";
-        valuelist += `, ${quarryId}, 0)`;
+        keylist += ", quarryId, orderStatus, dateOfBooking)";
+        valuelist += `, ${quarryId}, 0, NOW())`;
         sqlstatement = "INSERT INTO " + TABLE_NAME + " " + keylist + " VALUES " + valuelist + ";"
         await db.query(sqlstatement);
         console.log(sqlstatement)
