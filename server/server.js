@@ -26,7 +26,7 @@ app.use(express.json({limit: '10mb'}));
 app.post('/login', (req, res) => {
     const {username, password} = req.body;
 
-    let query = `select userId, username, role, quarryId from credentials where username=? and password=?`;
+    let query = `select userId, username, role, quarryId, (SELECT NAME FROM quarry_list WHERE quarryId=credentials.quarryId) AS quarryName from credentials where username=? and password=?`;
     let values = [username, password]
 
     db.query(query, values, (err, row) => {
