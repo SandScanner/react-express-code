@@ -176,9 +176,12 @@ app.post('/generate-pdf', async (req, res) => {
     <title>Permit Slip - PWD</title>
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style type="text/css">
         body {
-
+            font-family: 'Noto Sans Tamil', sans-serif;
             margin:0 auto;
             background: #fff;
             width: 204px;
