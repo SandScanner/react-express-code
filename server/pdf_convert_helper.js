@@ -7,7 +7,10 @@ async function generatePdf(html) {
     await page.setContent(html);
   
     // Generate PDF buffer
-    const pdfBuffer = await page.pdf({ width: '207px', height: '740px' });
+    const pdfBuffer = await page.pdf({ width: '207px', height: '740px', fontMetrics: [{
+        family: 'Noto Sans Tamil',
+        src: './public/fonts/NotoSans.ttf', // Replace with the path to your font file
+      }], });
   
     await browser.close();
   
