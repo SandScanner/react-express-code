@@ -4,8 +4,7 @@ async function generatePdf(html) {
     const page = await browser.newPage();
     
     // Set the content of the page to your HTML
-    await page.setContent(html);
-  
+    await page.setContent(html, { waitUntil: 'networkidle0' });
     // Generate PDF buffer
     const pdfBuffer = await page.pdf({ width: '207px', height: '740px'
     , fontMetrics: [
