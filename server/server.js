@@ -180,7 +180,6 @@ app.post('/generate-pdf', async (req, res) => {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style type="text/css">
         body {
-            font-family: 'Noto Sans Tamil', sans-serif;
             margin:0 auto;
             background: #fff;
             width: 204px;
