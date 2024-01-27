@@ -179,7 +179,14 @@ app.post('/generate-pdf', async (req, res) => {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style type="text/css">
+
+    @font-face {
+        font-family: "Nirmala UI";
+        src: url("/opt/render/.fonts/NirmalaB.ttf") /* TTF file for CSS3 browsers */
+    }
+
         body {
+            font-family: "Nirmala UI";
             margin:0 auto;
             background: #fff;
             width: 204px;
