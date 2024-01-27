@@ -11,13 +11,13 @@ async function generatePdf(html) {
     , fontMetrics: [
       {
         family: 'Nirmala UI',
-        src: '/opt/render/.fonts/Nirmala.ttf', // Replace with the path to your font file
+        src: './public/fonts/Nirmala.ttf', // Replace with the path to your font file
       }, {
         family: 'Nirmala UI Semilight',
-        src: '/opt/render/.fonts/NirmalaS.ttf', // Replace with the path to your font file
+        src: './public/fonts/NirmalaS.ttf', // Replace with the path to your font file
       },{
         family: 'Nirmala UI Bold',
-        src: '/opt/render/.fonts/NirmalaB.ttf', // Replace with the path to your font file
+        src: './public/fonts/NirmalaB.ttf', // Replace with the path to your font file
       }
     ],
    });

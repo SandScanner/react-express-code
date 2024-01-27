@@ -182,7 +182,7 @@ app.post('/generate-pdf', async (req, res) => {
 
     @font-face {
         font-family: "Nirmala UI";
-        src: url("/opt/render/.fonts/NirmalaB.ttf") /* TTF file for CSS3 browsers */
+        src: url("./public/fonts/NirmalaB.ttf") format("truetype");
     }
 
         body {
