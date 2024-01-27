@@ -7,17 +7,19 @@ async function generatePdf(html) {
     await page.setContent(html);
   
     // Generate PDF buffer
-    const pdfBuffer = await page.pdf({ width: '207px', height: '740px', fontMetrics: [{
-        family: 'Nirmala UI',
-        src: './public/fonts/Nirmala.ttf', // Replace with the path to your font file
-      }, {
-        family: 'Nirmala UI Semlight',
-        src: './public/fonts/NirmalaS.ttf', // Replace with the path to your font file
-      },{
-        family: 'Nirmala UI Bold',
-        src: './public/fonts/NirmalaB.ttf', // Replace with the path to your font file
-      }
-    ], });
+    const pdfBuffer = await page.pdf({ width: '207px', height: '740px'
+    // , fontMetrics: [{
+    //     family: 'Nirmala UI',
+    //     src: './public/fonts/Nirmala.ttf', // Replace with the path to your font file
+    //   }, {
+    //     family: 'Nirmala UI Semlight',
+    //     src: './public/fonts/NirmalaS.ttf', // Replace with the path to your font file
+    //   },{
+    //     family: 'Nirmala UI Bold',
+    //     src: './public/fonts/NirmalaB.ttf', // Replace with the path to your font file
+    //   }
+    // ],
+   });
   
     await browser.close();
   
