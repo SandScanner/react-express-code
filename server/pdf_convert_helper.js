@@ -1,6 +1,6 @@
 async function generatePdf(html) {
     const puppeteer = require('puppeteer');
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     
     // Set the content of the page to your HTML
