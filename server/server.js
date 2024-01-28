@@ -170,162 +170,161 @@ app.post('/generate-pdf', async (req, res) => {
                 img_src =  'data:image/png;base64,' + base64;
                 if(img_src){
                     const  html = `
-  <!doctype html>
-<html lang="en">
-<head>
-    <title>Permit Slip - PWD</title>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <style type="text/css">
-
-        body {
-            font-family: Arial, sans-serif;
-            margin:0 auto;
-            background: #fff;
-            width: 195px;
-            font-size: 10px;
-            
-            // line-height: 1.3;
-            font-weight: 10;
-        }
-        td {
-            padding: 3px 5px;
-        }
-        .tbPara {
-            border-bottom: 0.5px solid #000;
-        }
-        .expand {
-          transform: scale(1, 1.16);
-          padding-top: 1.2px;
-        }
-        .expand_title {
-        //   transform: scale(1, 1.1);
-        }
-        .pageTitle {
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 9.5px;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        .img-margin{
-          margin-top: 12px;
-          margin-right: 10px;
-        }
-        p {
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-        .clear {
-            overflow: hidden;
-            clear:both;
-            margin-bottom: 0px;
-        }
-        .left {
-            float: left;
-        }
-        .right {
-            float: right;
-        }
-        .center {
-            text-align: center;
-            padding: 10px;
-        }
-        .center img {
-            margin-bottom: 10px;
-        }
-
-        .width60 {
-          width: 90%;
-          }
-        .width75 {
-            width: 75%;
-        }
-        .width100 {
-            width: 100%;
-        }
-        .width25 {
-            width: 25%;
-            text-align: right;
-        }
-        .font13 {
-            font-size: 7px;
-            font-weight: bold;
-        }
-        .text-center {
-            text-align: center;
-        }
-        .rowWiseData > div {
-            padding-top: 5px;
-        }
-        
-    </style>
-</head>
-<body>
-<div class="clear">
-    <div class="width100 left expand_title">
-        <h4 class="pageTitle">கனிமம் மற்றும் கண்காணிப்பு வட்டம், சென்னை, நீ.ஆ.து நீர்வளத்துறையினால் மணல் கொண்டு செல்வதற்கு வழங்கப்பட்ட<br> அனுமதி சீட்டு முதல்படி
-            <br><strong>GSTIN: ${gstin}</strong></h4>
-    </div>
-
-    <div class="width100 center ">
-        <img src=${img_src} width="100" height="110" class="img-margin"/>
-        <p class="font13"></p>
-    </div>
-    <p style="text-align: right; padding-right: 12px; margin-top:7px" class="expand">அனுமதி எண். <strong>${permitNumber?.entryNo}</strong></p>
-
-    <div class="clear expand">
-        <div class="left"><p>பதிவு எண். <strong>${permitNumber?.permitNo}</strong></p></div>
-        <div class="right" style="padding-right: 10px"><p>நாள் : <strong>${formatted_dob}</strong></p></div>
-    </div>
-</div>
-<!-- <div class="center">
-
-</div> -->
-<div class="rowWiseData width60">
-    <div class="expand">1. <strong>${vehicleData?.surveyNumber}</strong></div>
-    <div class="expand">2. <strong>${vehicleData?.VillageName}</strong></div>
-    <div class="expand">3. அலகு - <strong>${vehicleData?.unit == 3 ? '8.49 m³' : '5.66 m³'}</strong></div>
-    <div class="expand">4. (i) அனுமதி வழங்கப்பட்ட நாளும் நேரமும் <br>
-        <strong>${formatted_approved_date}</strong>
-    </div>
-    <div class="expand">(ii) செலுத்தப்பட்ட தொகை<br>
-        <strong>₹ ${price} <br>(Inclusive of CGST Rs.${gst_price}/- and SGST
-            Rs.${gst_price}/-)</strong></div>
-    <div class="expand">5. (i) மணல் கொண்டு செல்வதற்கான அனுமதி எண் / நாள்
-        <br><strong>${permitNumber?.entryNo}/ ${formatted_dob}</strong></div>
-    <div class="expand">(ii) வண்டி எண் <br><strong>${vehicleNumber}</strong></div>
-    <div class="expand">(iii) மணல் கொண்டு செல்லுமிடம் <br><strong>${deliveryAddress}</strong></div>
-    <div class="expand">6. அனுமதிதாரர் / உரிமை முகவரின் பெயரும் கையொப்பமும்<br><strong>${vehicleData?.customerName}</strong>
-    </div>
-
-    <div class="expand">7. இந்த அனுமதியின் செல்திறன் கால அளவு <br>
-        <strong>${vehicleData?.permitExpiryDate1}</strong></div>
-
-    <!-- <div>8. அலுவலக முத்திரை <img src=${stamp_string} width="30" /></div> -->
-
-</div>
-<table style="width: 100%;">
-    <tr>
-        <td width="8%">8.</td>
-        <td width="50%" class="expand">அலுவலக முத்திரை</td>
-        <td width="2%">:</td>
-        <td width="50%">
-        <img src=${stamp_string} width="30"/>
-        </td>
-    </tr>
-    <tr>
-        <td width="8%"></td>
-        <td width="50%"><h4 style="margin: 0;" class="expand"><strong>ஓட்டுனரின் கையொப்பம்</strong></h4></td>
-        <td width="2%"></td>
-        <td width="50%"><h4 style="margin: 0;" class="expand"><strong>உதவி பொறியாளர்</strong></h4></td>
-    </tr>
-</table>
-<br><br><br><br>
-</body>
-</html>
+                    <!doctype html>
+                    <html lang="en">
+                    <head>
+                        <title>Permit Slip - PWD</title>
+                        <meta charset="utf-8">
+                        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+                        <link rel="preconnect" href="https://fonts.googleapis.com">
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                        <style type="text/css">
+                            body {
+                                font-family: 'Noto Sans Tamil', sans-serif;
+                                margin:0 auto;
+                                background: #fff;
+                                width: 204px;
+                                font-size: 8.7px;
+                                
+                                line-height: 1.4;
+                              //   font-weight: 10;
+                            }
+                            td {
+                                padding: 3px 5px;
+                            }
+                            .tbPara {
+                                border-bottom: 0.5px solid #000;
+                            }
+                            .expand {
+                              transform: scale(1, 1.16);
+                              padding-top: 1.2px;
+                            }
+                            .expand_title {
+                            //   transform: scale(1, 1.1);
+                            }
+                            .pageTitle {
+                                text-align: center;
+                                text-transform: uppercase;
+                                font-size: 8.5px;
+                                font-weight: 700;
+                                margin-bottom: 5px;
+                            }
+                            .img-margin{
+                            //   margin-top: 8px;
+                              margin-right: 10px;
+                            }
+                            p {
+                                margin-top: 0;
+                                margin-bottom: 5px;
+                            }
+                            .clear {
+                                overflow: hidden;
+                                clear:both;
+                                margin-bottom: 0px;
+                            }
+                            .left {
+                                float: left;
+                            }
+                            .right {
+                                float: right;
+                            }
+                            .center {
+                                text-align: center;
+                                padding: 10px;
+                            }
+                            .center img {
+                                margin-bottom: 10px;
+                            }
+                    
+                            .width60 {
+                              width: 90%;
+                              }
+                            .width75 {
+                                width: 75%;
+                            }
+                            .width100 {
+                                width: 100%;
+                            }
+                            .width25 {
+                                width: 25%;
+                                text-align: right;
+                            }
+                            .font13 {
+                                font-size: 7px;
+                                font-weight: bold;
+                            }
+                            .text-center {
+                                text-align: center;
+                            }
+                            .rowWiseData > div {
+                                padding-top: 5px;
+                            }
+                            
+                        </style>
+                    </head>
+                    <body>
+                    <div class="clear">
+                        <div class="width100 left expand_title">
+                            <h4 class="pageTitle">கனிமம் மற்றும் கண்காணிப்பு வட்டம், சென்னை, நீ.ஆ.து நீர்வளத்துறையினால் மணல் கொண்டு செல்வதற்கு வழங்கப்பட்ட<br> அனுமதி சீட்டு முதல்படி
+                                <br><strong>GSTIN: ${gstin}</strong></h4>
+                        </div>
+                    
+                        <div class="width100 center ">
+                            <img src=${img_src} width="110" height="120" class="img-margin"/>
+                            <p class="font13"></p>
+                        </div>
+                        <p style="text-align: right; padding-right: 12px; margin-top:7px" class="expand">அனுமதி எண். <strong>${permitNumber?.entryNo}</strong></p>
+                    
+                        <div class="clear expand">
+                            <div class="left"><p>பதிவு எண். <strong>${permitNumber?.permitNo}</strong></p></div>
+                            <div class="right" style="padding-right: 10px"><p>நாள் : <strong>${formatted_dob}</strong></p></div>
+                        </div>
+                    </div>
+                    <!-- <div class="center">
+                    
+                    </div> -->
+                    <div class="rowWiseData width60">
+                        <div class="expand">1. <strong>${vehicleData?.surveyNumber}</strong></div>
+                        <div class="expand">2. <strong>${vehicleData?.VillageName}</strong></div>
+                        <div class="expand">3. அலகு - <strong>${vehicleData?.unit == 3 ? '8.49 m³' : '5.66 m³'}</strong></div>
+                        <div class="expand">4. (i) அனுமதி வழங்கப்பட்ட நாளும் நேரமும் <br>
+                            <strong>${formatted_approved_date}</strong>
+                        </div>
+                        <div class="expand">(ii) செலுத்தப்பட்ட தொகை<br>
+                            <strong>₹ ${price} <br>(Inclusive of CGST Rs.${gst_price}/- and SGST
+                                Rs.${gst_price}/-)</strong></div>
+                        <div class="expand">5. (i) மணல் கொண்டு செல்வதற்கான அனுமதி எண் / நாள்
+                            <br><strong>${permitNumber?.entryNo}/ ${formatted_dob}</strong></div>
+                        <div class="expand">(ii) வண்டி எண் <br><strong>${vehicleNumber}</strong></div>
+                        <div class="expand">(iii) மணல் கொண்டு செல்லுமிடம் <br><strong>${deliveryAddress}</strong></div>
+                        <div class="expand">6. அனுமதிதாரர் / உரிமை முகவரின் பெயரும் கையொப்பமும்<br><strong>${vehicleData?.customerName}</strong>
+                        </div>
+                    
+                        <div class="expand">7. இந்த அனுமதியின் செல்திறன் கால அளவு <br>
+                            <strong>${vehicleData?.permitExpiryDate1}</strong></div>
+                    
+                        <!-- <div>8. அலுவலக முத்திரை <img src=${stamp_string} width="30" /></div> -->
+                    
+                    </div>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td width="8%">8.</td>
+                            <td width="50%" class="expand">அலுவலக முத்திரை</td>
+                            <td width="2%">:</td>
+                            <td width="50%">
+                            <img src=${stamp_string} width="30"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="8%"></td>
+                            <td width="50%"><h4 style="margin: 0;" class="expand"><strong>ஓட்டுனரின் கையொப்பம்</strong></h4></td>
+                            <td width="2%"></td>
+                            <td width="50%"><h4 style="margin: 0;" class="expand"><strong>உதவி பொறியாளர்</strong></h4></td>
+                        </tr>
+                    </table>
+                    <br><br><br><br>
+                    </body>
+                    </html>
 
   `;
 
