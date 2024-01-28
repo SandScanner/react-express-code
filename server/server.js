@@ -192,7 +192,7 @@ app.post('/generate-pdf', async (req, res) => {
             width: 195px;
             font-size: 9px;
             
-            line-height: 1.4;
+            line-height: 1.2;
           //   font-weight: 10;
         }
         td {
@@ -276,7 +276,7 @@ app.post('/generate-pdf', async (req, res) => {
     </div>
 
     <div class="width100 center ">
-        <img src=${img_src} width="97" height="107" class="img-margin"/>
+        <img src=${img_src} width="100" height="110" class="img-margin"/>
         <p class="font13"></p>
     </div>
     <p style="text-align: right; padding-right: 12px; margin-top:7px" class="expand">அனுமதி எண். <strong>${permitNumber?.entryNo}</strong></p>
