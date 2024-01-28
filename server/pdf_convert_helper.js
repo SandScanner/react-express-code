@@ -1,6 +1,8 @@
 async function generatePdf(html) {
     const puppeteer = require('puppeteer');
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
     const page = await browser.newPage();
     
     // Set the content of the page to your HTML
