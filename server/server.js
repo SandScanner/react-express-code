@@ -192,7 +192,7 @@ app.post('/generate-pdf', async (req, res) => {
             width: 195px;
             font-size: 9px;
             
-            line-height: 1.2;
+            line-height: 1.3;
           //   font-weight: 10;
         }
         td {
