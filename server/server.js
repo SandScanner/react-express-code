@@ -211,7 +211,7 @@ app.post('/generate-pdf', async (req, res) => {
         .pageTitle {
             text-align: center;
             text-transform: uppercase;
-            font-size: 8.5px;
+            font-size: 9.5px;
             font-weight: 700;
             margin-bottom: 5px;
         }
