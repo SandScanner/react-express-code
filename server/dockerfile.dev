@@ -22,7 +22,6 @@ RUN npm install
 
 RUN npx puppeteer browsers install chrome
 
-RUN apt-get install libgtk2.0-0:i386 libsm6:i386
 
 # Starting our application
 CMD [ "node", "server.js" ]
