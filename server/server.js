@@ -189,7 +189,7 @@ app.post('/generate-pdf', async (req, res) => {
             font-family: "Nirmala UI";
             margin:0 auto;
             background: #fff;
-            width: 204px;
+            width: 195px;
             font-size: 8.7px;
             
             line-height: 1.4;
