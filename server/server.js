@@ -180,20 +180,15 @@ app.post('/generate-pdf', async (req, res) => {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style type="text/css">
 
-    @font-face {
-        font-family: "Nirmala UI";
-        src: url("./public/fonts/NirmalaB.ttf") format("truetype");
-    }
-
         body {
-            font-family: "Nirmala UI";
+            font-family: Arial, sans-serif;
             margin:0 auto;
             background: #fff;
             width: 195px;
-            font-size: 9px;
+            font-size: 10px;
             
-            line-height: 1.3;
-          //   font-weight: 10;
+            // line-height: 1.3;
+            font-weight: 10;
         }
         td {
             padding: 3px 5px;
@@ -206,7 +201,7 @@ app.post('/generate-pdf', async (req, res) => {
           padding-top: 1.2px;
         }
         .expand_title {
-          transform: scale(1, 1.1);
+        //   transform: scale(1, 1.1);
         }
         .pageTitle {
             text-align: center;
