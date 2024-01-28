@@ -190,7 +190,7 @@ app.post('/generate-pdf', async (req, res) => {
             margin:0 auto;
             background: #fff;
             width: 195px;
-            font-size: 8.7px;
+            font-size: 9px;
             
             line-height: 1.4;
           //   font-weight: 10;
